@@ -3,98 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio</title>
+    <title>JP</title>
     <!-- Enlace a Bootstrap CSS (CDN) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        /* Estilos para la animación de introducción */
+        #intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        #intro img {
+            width: 30px;
+            height: auto;
+            animation: zoomExpand 3s ease-in-out, fadeOut 2s 1s forwards;
+        }
+
+        @keyframes zoomExpand {
+            0% {
+                width: 30px;
+            }
+            100% {
+                width: 50%;
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Ocultar el contenido principal inicialmente */
+        #main-content {
+            display: none;
+        }
+
+        /* Estilos de la página principal */
+        #sections-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .section {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+        }
+
+        /* Animación de volteo horizontal 360 grados en hover */
+        .flip-image {
+            width: 150px; /* Ajusta el tamaño según lo necesites */
+            height: 150px;
+            border-radius: 50%;
+            margin: 20px 0;
+            transition: transform 1s ease-in-out;
+            transform-style: preserve-3d;
+        }
+
+        .flip-image:hover {
+            transform: rotateY(360deg);
+        }
+    </style>
 </head>
 <body>
+    <!-- Animación de introducción -->
+    <div id="intro">
+        <img src="{{ url_for('static', filename='images/intro-image.jpg') }}" alt="Imagen de Intro">
+    </div>
+
     <!-- Cabecera con Navbar -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url_for('home') }}">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Mi Portafolio" width="150">
+                <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Mi Portafolio" width="150" class="me-2">
+                    <span class="text-white fw-bold h5 mb-0">Jhon Edward Pulido Bustamante</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{ url_for('home') }}">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('about') }}">Sobre mí</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('projects') }}">Proyectos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('contact') }}">Contacto</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link active" href="{{ url_for('home') }}">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">Bibliografía</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('projects') }}">Portafolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Redes</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- Sección de Introducción con Animación -->
-    <div id="intro">
-        <img src="{{ url_for('static', filename='images/intro-image.jpg') }}" alt="Imagen de Intro">
-    </div>
+    <!-- Contenido Principal -->
+    <div id="main-content" class="container mt-5">
+        <h1>¡Explora mi mundo y contáctame si quieres saber más!</h1>
 
-    <!-- Contenido Principal (escondido hasta que se termine la animación) -->
-    <div id="main-content" style="display: none;">
-        <div class="container mt-5">
-            <h1>Bienvenida a Mi Portafolio y Mi Trayectoria Profesional</h1>
-            <p>Soy Jhon Edward Pulido Bustamante, Ingeniero de Sistemas con más de 19 años de experiencia en gestión de proyectos y desarrollo tecnológico. He liderado equipos en sectores como ingeniería, tecnología y gestión de recursos, y cuento con dos Magísteres en Seguridad Industrial y Gerencia de Mercadeo, lo que me permite combinar una sólida formación técnica con visión estratégica.</p>
-            <p>Este portafolio presenta mis proyectos más relevantes, habilidades en diseño digital y desarrollo de aplicaciones. Además, soy escritor, artista y programador independiente, siempre enfocado en la innovación y la mejora continua.</p>
-            <p>Gracias por explorar mi trabajo; confío en que encuentres en él algo verdaderamente inspirador.</p>
-
-            <!-- Sección Sobre mí -->
-            <section id="about">
-                <h2>Sobre mí</h2>
-                <p style="display: flex; justify-content: space-between; align-items: center; text-align: justify;">
-                    Aquí podrás conocer más sobre mi experiencia profesional, mis logros y los oficios que han marcado mi trayectoria. A través de este recorrido, compartiré cómo fui formando mi personalidad y filosofía de vida, siempre guiado por la pasión por la innovación, el compromiso con la mejora continua y el deseo de dejar una huella positiva en cada proyecto que emprendo.
-                    <a href="{{ url_for('about') }}">
-                        <img src="{{ url_for('static', filename='images/yo.png') }}" alt="Mi foto" style="width: 200px; height: 200px; border-radius: 50%; margin-left: 20px;">
-                    </a>
-                </p>
-            </section>
-
-
-
-
-            <!-- Sección Proyectos -->
-            <section id="projects">
-                <h2>Proyectos</h2>
-                <p>Aquí algunos de mis proyectos más recientes</p>
-                <!-- Agrega los detalles de tus proyectos aquí -->
-            </section>
-
-            <!-- Sección Contacto -->
-            <section id="contact">
-                <h2>Contacto</h2>
-                <p>Puedes contactarme a través de [tu correo electrónico o redes sociales].</p>
-            </section>
+        <div id="sections-container">
+            <div class="section" id="about">
+                <h2>Bibliografía</h2>
+                <h5>Construyendo un Legado</h5>
+                <img src="{{ url_for('static', filename='images/Bio.png') }}" alt="Mi foto" class="flip-image">
+                <p>Aquí podrás conocer más sobre mi experiencia profesional, mis logros y los oficios que han marcado mi trayectoria. A través de este recorrido, compartiré cómo fui formando mi personalidad y filosofía de vida, siempre guiado por la pasión por la innovación, el compromiso con la mejora continua y el deseo de dejar una huella positiva en cada proyecto que emprendo.</p>
+                <a href="{{ url_for('about') }}" class="btn btn-primary">Leer más</a>
+            </div>
+            <div class="section" id="projects">
+                <h2>Portafolio</h2>
+                <h5>Un viaje creativo e innovador</h5>
+                <img src="{{ url_for('static', filename='images/project.png') }}" alt="Proyectos" class="flip-image">
+                <p>Desde temprana edad, mi curiosidad innata y el deseo constante de innovar me llevaron a explorar múltiples disciplinas y a cultivar una pasión por el aprendizaje continuo. En este portafolio, encontrarás mis logros más significativos y los proyectos que han dejado una huella importante en mi vida, cada uno de ellos impregnado de dedicación, creatividad y esfuerzo.</p>
+                <a href="{{ url_for('projects') }}" class="btn btn-primary">Ver proyectos</a>
+            </div>
+            <div class="section" id="contact">
+                <h2>Redes</h2>
+                <h5>Mi Presencia Digital</h5>
+                <img src="{{ url_for('static', filename='images/contact.png') }}" alt="Contacto" class="flip-image">
+                <p>Conéctate conmigo a través de mis plataformas digitales para explorar en profundidad mi legado profesional, acceder a proyectos destacados y establecer un canal de comunicación directa. A través de mis redes sociales, comparto mi pasión, experiencia y creatividad de forma interactiva, creando un espacio para la colaboración y el intercambio de ideas.</p>
+                <a href="{{ url_for('contact') }}" class="btn btn-primary">Contáctame</a>
+            </div>
         </div>
     </div>
 
-    <!-- Script de Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script para mostrar el contenido principal tras la animación -->
     <script>
-        $(document).ready(function() {
-            // Agregar clase de animación a la imagen
-            $('#intro img').addClass('zoomIn');
-            
-            // Una vez que termine la animación de la imagen
-            $('#intro').on('animationend', function() {
-                $('#intro').fadeOut(500);  // Desaparece la imagen
-                $('#main-content').fadeIn(1000);  // Muestra el contenido principal
-            });
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#intro").remove();
+                $("#main-content").fadeIn();
+            }, 3000); // Tiempo total de animación (2s zoomExpand + 1s fadeOut)
         });
     </script>
+
+    <!-- Script de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
