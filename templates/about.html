@@ -14,26 +14,19 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Mi Portafolio" width="150">
+                <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Mi Portafolio" width="50" class="me-2">
+                    <span class="text-white fw-bold h5 mb-0">Jhon Edward Pulido Bustamante</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{ url_for('home') }}">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('about') }}">Bibliografía</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('projects') }}">Portafolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('contact') }}">Redes</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link active" href="{{ url_for('jp') }}">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">Bibliografía</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('projects') }}">Portafolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Redes</a></li>
                     </ul>
                 </div>
             </div>
@@ -42,7 +35,6 @@
 
     <!-- Contenido Principal -->
     <div class="container mt-5">
-        <h1>Sobre mí</h1><br></br>
         <p class="lead">Soy Jhon Edward Pulido Bustamante, un profesional con una visión multidisciplinaria y un enfoque apasionado por la innovación. Nacido el 5 de junio de 1978 en Caracas, mi carrera ha estado dedicada a la ingeniería, la gestión de proyectos y el desarrollo tecnológico, áreas en las que he adquirido un conocimiento profundo y una capacidad adaptativa que me permite abordar proyectos de gran envergadura con éxito. A lo largo de mi experiencia laboral en diversas industrias, he aprendido a integrar soluciones tecnológicas de manera eficiente y efectiva, destacándome por mi habilidad para liderar equipos, gestionar recursos y transformar ideas en realidades tangibles. Siempre busco la mejora continua y el aprendizaje, con el objetivo de contribuir al progreso y a la evolución de los sectores en los que participo.</p>
         
         <h2 class="mt-5">Trayectoria Académica</h2>
@@ -99,7 +91,9 @@
         <h2 class="mt-5">Perspectiva Personal</h2>
         <p class="mb-4">Mi enfoque profesional se basa en la innovación continua y la búsqueda de soluciones estratégicas para los desafíos más complejos. Estoy comprometido con el desarrollo personal y profesional, combinando mi formación técnica, creatividad y experiencia en la gestión de recursos.</p>
     </div>
-
+    <footer class="bg-dark text-white text-center py-3">
+        <p>© 2024 - 2025  Jhon Edward Pulido Bustamante - Todos los derechos reservados</p>
+    </footer>
     <!-- Script de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

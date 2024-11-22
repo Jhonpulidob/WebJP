@@ -18,5 +18,9 @@ def projects():
 def contact():
     return render_template('contact.html')
 
+@app.route('/jp')
+def jp():
+    return render_template('jp.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
